@@ -30,7 +30,7 @@ class App:
 
     def get_package_name(self):
         try:
-            command = 'aapt dump badging ' + self.apk_path
+            command = 'aapt dump badging ' + self.apkPath
             result = os.popen(command).readlines()
             for line in result:
                 package_head = "package: name='"
