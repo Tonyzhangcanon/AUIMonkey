@@ -23,10 +23,8 @@ class App:
                     name = line[line.index(name_head) + len(name_head):len(line) - 2]
                     self.appName = name
                     print name
-                    del name, name_head
+                    del name, name_head, line , command, result
                     break
-                del line
-            del command, result
         except:
             print "get app name error"
 
@@ -40,11 +38,10 @@ class App:
                 if package_head in line:
                     print line
                     package_name = line[line.index(package_head) + len(package_head):line.index(end)]
-                    self.packageName = package_name
                     print package_name
-                    del package_name, command, result, package_head, end
+                    self.packageName = package_name
+                    del command, result, package_head, end
                     break
-            del command, result
         except:
             print 'get package name error'
 
@@ -61,9 +58,8 @@ class App:
                     version_code = line[:line.index(end)]
                     self.versionCode = version_code
                     print version_code
-                    del version_code, command, result, version_code_head, line
+                    del command, result, version_code_head, line, device_id
                     break
-            del command, result, device_id
         except:
             del device_id
             print 'get version code error'
@@ -82,9 +78,8 @@ class App:
                     version_code = line[:line.index(end)]
                     self.versionCode = version_code
                     print version_code
-                    del command, result, version_code_head, line
+                    del version_code, command, result, version_code_head, line
                     break
-            del command, result
         except:
             print 'get version code error'
 
@@ -99,9 +94,8 @@ class App:
                     print line
                     version_name = line[line.index(version_name_head) + len(version_name_head):]
                     self.versionName = version_name
-                    del command, result, version_name_head, line
+                    del version_name, command, result, version_name_head, line, device_id
                     break
-            del command, result, device_id
         except:
             del device_id
             print 'get version name error'
@@ -119,7 +113,6 @@ class App:
                     version_name = line[:line.index(end)]
                     self.versionName = version_name
                     print version_name
-                    del command, result, line, version_name_head, end
-            del command, result
+                    del version_name, command, result, line, version_name_head, end
         except:
             print 'get version name error'

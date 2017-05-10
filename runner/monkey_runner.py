@@ -25,7 +25,7 @@ def run_monkey(plan, app, device):
     device.update_begin_time()
     os.system(monkey_command)
     device.update_end_time()
-    logfile = open(device.logFile, 'r')
+    logfile = open(device.logPath + "/monkey.txt", 'r')
     log = logfile.read()
     if "Monkey finished" in log:
         device.result = "Passed"
