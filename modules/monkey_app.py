@@ -36,7 +36,7 @@ class App:
             result = os.popen(command).readlines()
             for line in result:
                 package_head = "package: name='"
-                end = "' "
+                end = "' versionCode"
                 if package_head in line:
                     print line
                     package_name = line[line.index(package_head) + len(package_head):line.index(end)]

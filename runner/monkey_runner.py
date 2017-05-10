@@ -22,9 +22,9 @@ def uninstall_app(device_id_list, app):
 def run_monkey(plan, app, device):
     device.logFile = 'monkey_' + device.id + '.txt'
     monkey_command = "adb -s " + device.id + " shell monkey -p " + app.packageName + "  -v -v --throttle 200 10000 > " + device.logPath + "/monkey.txt"
-    device.update_begin_time(datetime.datetime.now())
+    device.update_begin_time()
     os.system(monkey_command)
-    device.update_end_time(datetime.datetime.now())
+    device.update_end_time()
     logfile = open(device.logFile, 'r')
     log = logfile.read()
     if "Monkey finished" in log:
