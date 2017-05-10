@@ -23,6 +23,105 @@ def make_result_html(plan, app):
                 '        clear: both;\n' + \
                 '        position: fixed;\n' + \
                 '      }\n' + \
+                '        body {\n' + \
+                '          margin: 0;\n' + \
+                '          font - family: "Helvetica Neue", Helvetica, Arial, sans - serif;\n' + \
+                '          font - size: 14px;\n' + \
+                '          line - height: 20px;\n' + \
+                '          color:  # 333333;\n' + \
+                '          background - color:  # ffffff;\n' + \
+                '        }\n' + \
+                '        a {\n' + \
+                '           color:  # 0088cc;\n' + \
+                '           text - decoration: none;\n' + \
+                '        }\n' + \
+                '        .row {\n' + \
+                '           margin - left: -20px;\n' + \
+                '           *zoom: 1;\n' + \
+                '        }\n' + \
+                '        .row:before,\n' + \
+                '        .row:after {\n' + \
+                '           display: table;\n' + \
+                '           line - height: 0;\n' + \
+                '           content: "";\n' + \
+                '        }\n' + \
+                '        .row:after {\n' + \
+                '           clear: both;\n' + \
+                '        }\n' + \
+                '        .container {\n' + \
+                '           width: 940px;\n' + \
+                '           margin - right: auto;\n' + \
+                '           margin - left: auto;\n' + \
+                '           *zoom: 1;\n' + \
+                '        }\n' + \
+                '        strong {\n' + \
+                '           font - weight: bold;\n' + \
+                '        }\n' + \
+                '        h1 {\n' + \
+                '           margin: 10px 0;\n' + \
+                '           font - family: inherit;\n' + \
+                '           font - weight: bold;\n' + \
+                '           color: inherit;\n' + \
+                '           text - rendering: optimizelegibility;\n' + \
+                '           line - height: 40px;\n' + \
+                '           font - size: 38px;\n' + \
+                '        }\n' + \
+                '        table {\n' + \
+                '           max - width: 100 %;\n' + \
+                '           background - color: transparent;\n' + \
+                '           border - collapse: collapse;\n' + \
+                '           border - spacing: 0;\n' + \
+                '        }\n' + \
+                '        .table {\n' + \
+                '           width: 100 %;\n' + \
+                '           margin - bottom: 20px;\n' + \
+                '        }\n' + \
+                '        .table th,\n' + \
+                '        .table td {\n' + \
+                '           padding: 8px;\n' + \
+                '           line - height: 20px;\n' + \
+                '           text - align: left;\n' + \
+                '           vertical - align: top;\n' + \
+                '           border - top: 1px\n' + \
+                '           solid  # dddddd;\n' + \
+                '        }\n' + \
+                '        .table - bordered {\n' + \
+                '           border: 1px solid  # dddddd;\n' + \
+                '           border - collapse: separate;\n' + \
+                '           *border - collapse: collapse;\n' + \
+                '           border - left: 0;\n' + \
+                '           -webkit - border - radius: 4px;\n' + \
+                '           -moz - border - radius: 4px;\n' + \
+                '           border - radius: 4px;\n' + \
+                '        }\n' + \
+                '        .table - bordered th,\n' + \
+                '        .table - bordered td {\n' + \
+                '           border - left: 1px solid  # dddddd;\n' + \
+                '        }\n' + \
+                '        .table tbody tr.success > td {\n' + \
+                '           background - color:  # dff0d8;\n' + \
+                '        }\n' + \
+                '        .table tbody tr.error > td {\n' + \
+                '           background - color:  # f2dede;\n' + \
+                '        }\n' + \
+                '        .table tbody tr.warning > td {\n' + \
+                '           background - color:  # fcf8e3;\n' + \
+                '        }\n' + \
+                '        .table tbody tr.info > td {\n' + \
+                '           background - color:  # d9edf7;\n' + \
+                '        }\n' + \
+                '        .table - hover tbody tr.success:hover > td {\n' + \
+                '           background - color:  # d0e9c6;\n' + \
+                '        }\n' + \
+                '        .table - hover tbody tr.error:hover > td {\n' + \
+                '           background - color:  # ebcccc;\n' + \
+                '        }\n' + \
+                '        .table - hover tbody tr.warning:hover > td {\n' + \
+                '           background - color:  # faf2cc;\n' + \
+                '        }\n' + \
+                '        .table - hover tbody tr.info:hover > td {\n' + \
+                '           background - color:  # c4e3f3;\n' + \
+                '        }\n' + \
                 '    </style>\n' + \
                 '  </head>\n'
     html_body_head = '   <body>\n' + \
@@ -41,16 +140,16 @@ def make_result_html(plan, app):
     html_app_info = '          <table width="100%" cellpadding="0" border="0" cellspacing="0" style="border:none;">\n' + \
                     '            <tbody>\n' + \
                     '              <tr>\n' + \
-                    '                <td width="110" class="txt_gray"><strong>Product Name：</strong></td>\n' + \
-                    '                <td width="100" align="left" >' + app.appName + '</td>\n' + \
-                    '                <td width="120"class="txt_gray"><strong>Package Name：</strong></td>\n' + \
-                    '                <td width="170" align="left">' + app.packageName + '</td>\n' + \
-                    '                <td width="110"class="txt_gray"><strong>Version Name：</strong></td>\n' + \
-                    '                <td width="70" align="left">' + app.versionName + '</td>\n' + \
-                    '                <td width="110"class="txt_gray"><strong>Version Code：</strong></td>\n' + \
-                    '                <td width="30" align="left">' + app.versionCode + '</td>\n' + \
-                    '                <td width="50"class="txt_gray"><strong>Version：</strong></td>\n' + \
-                    '                <td width="30" align="left">\n' + \
+                    '                <td width="auto" class="txt_gray"><strong>Product Name：</strong></td>\n' + \
+                    '                <td width="auto" align="left" >' + app.appName + '</td>\n' + \
+                    '                <td width="auto"class="txt_gray"><strong>Package Name：</strong></td>\n' + \
+                    '                <td width="auto" align="left">' + app.packageName + '</td>\n' + \
+                    '                <td width="auto"class="txt_gray"><strong>Version Name：</strong></td>\n' + \
+                    '                <td width="auto" align="left">' + app.versionName + '</td>\n' + \
+                    '                <td width="auto"class="txt_gray"><strong>Version Code：</strong></td>\n' + \
+                    '                <td width="auto" align="left">' + app.versionCode + '</td>\n' + \
+                    '                <td width="auto"class="txt_gray"><strong>Version：</strong></td>\n' + \
+                    '                <td width="auto" align="left">\n' + \
                     '                  <a href=' + app.buildUrl + '>\n' + \
                     '                    <span>\n' + \
                     '                      ' + app.buildVersion + '\n' + \
