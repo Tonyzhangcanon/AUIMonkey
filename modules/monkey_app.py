@@ -19,14 +19,16 @@ class App:
             for line in result:
                 name_head = "application-label-zh-CN:'"
                 if name_head in line:
+                    print line
                     name = line[line.index(name_head) + len(name_head):len(line) - 2]
-                    del name_head
                     self.appName = name
+                    print name
+                    del name, name_head
+                    break
                 del line
             del command, result
-            self.appName = ''
         except:
-            self.appName = ""
+            print "get app name error"
 
     def get_package_name(self):
         try:
@@ -36,13 +38,15 @@ class App:
                 package_head = "package: name='"
                 end = "' "
                 if package_head in line:
+                    print line
                     package_name = line[line.index(package_head) + len(package_head):line.index(end)]
-                    del command, result, package_head, end
                     self.packageName = package_name
+                    print package_name
+                    del package_name, command, result, package_head, end
+                    break
             del command, result
-            self.packageName = ''
         except:
-            self.packageName = ""
+            print 'get package name error'
 
     def get_version_code_in_device(self, device_id):
         try:
@@ -52,48 +56,56 @@ class App:
                 version_code_head = "versionCode="
                 end = " t"
                 if version_code_head in line:
+                    print line
                     line = line[line.index(version_code_head) + len(version_code_head):]
                     version_code = line[:line.index(end)]
-                    del command, result, version_code_head, line
                     self.versionCode = version_code
+                    print version_code
+                    del version_code, command, result, version_code_head, line
+                    break
             del command, result, device_id
-            self.versionCode = ''
         except:
             del device_id
-            self.versionCode = ''
+            print 'get version code error'
 
     def get_version_code(self):
         try:
             command = 'aapt dump badging ' + self.apkPath
             result = os.popen(command).readlines()
             for line in result:
+                print line
                 version_code_head = "versionCode='"
                 end = "' "
                 if version_code_head in line:
+                    print line
                     line = line[line.index(version_code_head) + len(version_code_head):]
                     version_code = line[:line.index(end)]
                     del command, result, version_code_head, line
                     self.versionCode = version_code
+                    print version_code
+                    del version_code
+                    break
             del command, result
-            self.versionCode = ''
         except:
-            self.versionCode = ''
+            print 'get version code error'
 
     def get_version_name_in_device(self, device_id):
         try:
             command = 'adb -s ' + device_id + ' shell dumpsys package ' + self.packageName
             result = os.popen(command).readlines()
             for line in result:
+                print line
                 version_name_head = "versionName="
                 if version_name_head in line:
+                    print line
                     version_name = line[line.index(version_name_head) + len(version_name_head):]
-                    del command, result, version_name_head, line
                     self.versionName = version_name
+                    del command, result, version_name_head, line
+                    break
             del command, result, device_id
-            self.versionName = ''
         except:
             del device_id
-            self.versionName = ''
+            print 'get version name error'
 
     def get_version_name(self):
         try:
@@ -103,11 +115,12 @@ class App:
                 version_name_head = "versionName='"
                 end = "' "
                 if version_name_head in line:
+                    print line
                     line = line[line.index(version_name_head) + len(version_name_head):]
                     version_name = line[:line.index(end)]
-                    del command, result, line, version_name_head, end
                     self.versionName = version_name
+                    print version_name
+                    del command, result, line, version_name_head, end, version_name
             del command, result
-            self.versionName = ''
         except:
-            self.versionName = ''
+            print 'get version name error'

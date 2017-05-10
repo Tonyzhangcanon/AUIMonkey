@@ -19,10 +19,10 @@ opts, args = getopt.getopt(sys.argv[1:], "iua:b:d:e:n:p:s:t:w:")
 for op, value in opts:
     if op == "-a":
         app.apkPath = value
-        app.packageName = app.get_package_name()
-        app.appName = app.get_app_name()
-        app.versionCode = app.get_version_code()
-        app.versionName = app.get_version_name()
+        app.get_package_name()
+        app.get_app_name()
+        app.get_version_code()
+        app.get_version_name()
     elif op == "-b":
         build_info = []
         build_info = value.split(',')
@@ -51,12 +51,12 @@ for op, value in opts:
         setting.InstallApk = True
     elif op == '-w':
         plan.workspace = str(value) + '/ws'
-
+print "device id list :" + device_id_list
 if len(plan.deviceList) == 0:
     plan.get_device_list()
 if len(app.apkPath) == 0:
-    app.versionCode = app.get_version_code_in_device(plan.deviceList[0])
-    app.versionName = app.get_version_name_in_device(plan.deviceList[0])
+    app.get_version_code_in_device(plan.deviceList[0])
+    app.get_version_name_in_device(plan.deviceList[0])
 
 monkey_runner.uninstall_app(device_id_list, app)
 monkey_runner.install_app(device_id_list, app)

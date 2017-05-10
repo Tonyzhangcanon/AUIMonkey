@@ -13,8 +13,8 @@ events = 10000 # -e
 
 
 #  - * Apk Install Setting * -
-UnInstallApk = True  # True (uninstall app & testApp) , False
-InstallApk = True  # True (install app & testApp) ,False
+UnInstallApk = False  # True (uninstall app & testApp) , False
+InstallApk = False  # True (install app & testApp) ,False
 
 #  - * send crawl result email * -
 SMTP_HOST = "smtp.xxx.xxx"  # Set mail smtp host

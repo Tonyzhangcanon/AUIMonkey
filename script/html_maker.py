@@ -76,7 +76,7 @@ def make_result_html(plan, app):
                        '            </thead>\n' + \
                        '            <tbody>\n'
     html_device_list = ''
-    for device in plan.device_list:
+    for device in plan.deviceList:
         if device.result == "Passed":
             result_class = "success"
         else:
