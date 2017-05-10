@@ -51,7 +51,6 @@ for op, value in opts:
         setting.InstallApk = True
     elif op == '-w':
         plan.workspace = str(value) + '/ws'
-print "device id list :" + device_id_list
 if len(plan.deviceList) == 0:
     plan.get_device_list()
 if len(app.apkPath) == 0:

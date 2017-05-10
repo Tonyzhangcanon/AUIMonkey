@@ -80,10 +80,9 @@ class App:
                     print line
                     line = line[line.index(version_code_head) + len(version_code_head):]
                     version_code = line[:line.index(end)]
-                    del command, result, version_code_head, line
                     self.versionCode = version_code
                     print version_code
-                    del version_code
+                    del command, result, version_code_head, line
                     break
             del command, result
         except:
@@ -120,7 +119,7 @@ class App:
                     version_name = line[:line.index(end)]
                     self.versionName = version_name
                     print version_name
-                    del command, result, line, version_name_head, end, version_name
+                    del command, result, line, version_name_head, end
             del command, result
         except:
             print 'get version name error'
