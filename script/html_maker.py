@@ -178,8 +178,12 @@ def make_result_html(plan, app):
     for device in plan.deviceList:
         if device.result == "Passed":
             result_class = "success"
-        else:
+        elif device.result == "Crashed":
             result_class = "error"
+        elif device.result == "ANR":
+            result_class = "warning"
+        else:
+            result_class = "info"
         duration = (device.endTime - device.beginTime).seconds
         monkey_log_url = plan.workspace + '/result/' + plan.runBeginTime.strftime('%Y%m%d%H%M%S') + '/' + device.id + '/monkey.txt'
         device_result_html = '              <tr class=' + result_class + '>\n' + \
