@@ -50,7 +50,7 @@ for op, value in opts:
         setting.UnInstallApk = True
         setting.InstallApk = True
     elif op == '-w':
-        plan.workspace = str(value) + '/ws'
+        plan.workspace = str(value) + 'job/AUIMonkey/ws'
 if len(plan.deviceList) == 0:
     plan.get_device_list()
 if len(app.apkPath) == 0:

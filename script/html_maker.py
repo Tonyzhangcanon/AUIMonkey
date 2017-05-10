@@ -186,16 +186,21 @@ def make_result_html(plan, app):
             result_class = "info"
         duration = (device.endTime-device.beginTime).seconds
         monkey_log_url = plan.workspace + '/result/' + plan.runBeginTime.strftime('%Y%m%d%H%M%S') + '/' + device.id + '/monkey.txt'
+        logcat_url = plan.workspace + '/result/' + plan.runBeginTime.strftime('%Y%m%d%H%M%S') + '/' + device.id + '/logcat.txt'
         device_result_html = '              <tr class=' + result_class + '>\n' + \
                              '                <td>' + device.name + '</td>\n' + \
                              '                <td>' + device.id + '</td>\n' + \
                              '                <td>' + device.version + '</td>\n' + \
                              '                <td>\n' + \
-                             '                  <a href=' + monkey_log_url + '>\n' + \
+                             '                  <a href=' + logcat_url + '>\n' + \
                              '                    <span>' + device.result + '</span>\n' + \
                              '                  </a>\n' + \
                              '                </td>\n' + \
-                             '                <td>' + str(duration) + ' Sec</td>\n' + \
+                             '                <td>\n' + \
+                             '                  <a href=' + monkey_log_url + '>\n' + \
+                             '                    <span>' + str(duration) + ' Sec</span>\n' + \
+                             '                  </a>\n' + \
+                             '                </td>\n' + \
                              '              </tr>\n'
         html_device_list += device_result_html
     html_end = '             </tbody>\n' + \

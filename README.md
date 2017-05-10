@@ -37,7 +37,7 @@ Mail_Pass : 使用的邮箱账号的登录密码
 -s xxx      : monkey 参数 seed ，两次传入相同的seed值，事件顺序相同 ,默认100
 -t xxx      : monkey 参数 throttle ，事件中的间隔时间，毫秒，用来控制压力，默认100
 -u          : 是否卸载，与 -a 结合使用，传入-u 可以不传入-i，也会安装
--w xxx      : 传入${JOB_URL}，用来拼接设备的monkey Log 超链，在报告中显示
+-w xxx      : 传入${JENKINS_URL}，用来拼接设备的monkey Log 超链，在报告中显示
 ```
 ##### 示例场景：
 1. 指定apk快速monkey
