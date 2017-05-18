@@ -1,5 +1,4 @@
 # -*- coding=utf-8 -*-
-import datetime
 import os
 from script import saver
 from config import setting
