@@ -45,7 +45,7 @@ Mail_Pass : 使用的邮箱账号的登录密码
 cd Jenkins中AUIMonkey目录
 python monkey.py -a ${WORKSPACE}/build/ui/outputs/apk/xxx-xxx.apk -b ${BUILD_URL},&{BUILD_ID} -iw ${JOB_URL}
 ```
-* 自由组合参数执行，默认执行模式：所有设备、不重新安装、不初始化、按序执行所有控件、不截图、Crash／ANR就停止、过程中不登录
+* 自由组合参数执行，默认执行模式：所有设备、不重新安装, 执行10000个随机事件
 * 可以修改Setting调整默认的执行模式
 ### 脚本结构:
 #### 封装的模块:
@@ -76,7 +76,7 @@ monkey_device :  每个执行的Device的本身信息
 ##### 发送邮件报告
 ```
 在Setting.py中配置邮件信息
-遍历结束后将报告发送给对应的接收人
+Monkey结束后将报告发送给对应的接收人
 不设置不会发送，不会报异常
 ```
 ##### 邮件报告显示
