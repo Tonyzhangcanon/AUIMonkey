@@ -19,22 +19,25 @@ def uninstall_app(device_id_list, app):
 
 
 def run_monkey(plan, app, device):
-    device.logFile = 'monkey_' + device.id + '.txt'
-    monkey_command = "adb -s " + device.id + " shell monkey -p " + app.packageName + "  -v -v --throttle 200 10000 > " + device.logPath + "/monkey.txt"
-    device.update_begin_time()
-    os.system(monkey_command)
-    device.update_end_time()
-    logfile = open(device.logPath + "/monkey.txt", 'r')
-    log = logfile.read()
-    if "Monkey finished" in log:
-        device.result = "Passed"
-    elif "CRASH" in log:
-        device.result = "Crashed"
-    elif "NOT RESPONDING" in log:
-        device.result = "ANR"
-    elif "ERROR" in log:
-        device.result = "Error"
+    if device.statue == "unlock":
+        device.logFile = 'monkey_' + device.id + '.txt'
+        monkey_command = "adb -s " + device.id + " shell monkey -p " + app.packageName + "  -v -v --throttle 200 10000 > " + device.logPath + "/monkey.txt"
+        device.update_begin_time()
+        os.system(monkey_command)
+        device.update_end_time()
+        logfile = open(device.logPath + "/monkey.txt", 'r')
+        log = logfile.read()
+        if "Monkey finished" in log:
+            device.result = "Passed"
+        elif "CRASH" in log:
+            device.result = "Crashed"
+        elif "NOT RESPONDING" in log:
+            device.result = "ANR"
+        elif "ERROR" in log:
+            device.result = "Error"
+        else:
+            device.result = "Unknown Exception"
+        saver.save_logcat(plan, device)
     else:
-        device.result = "Unknown Exception"
-    saver.save_logcat(plan, device)
+        device.result = "DeviceExc"
 
