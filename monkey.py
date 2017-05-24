@@ -57,9 +57,6 @@ if len(app.apkPath) == 0:
     app.get_version_code_in_device(plan.deviceList[0])
     app.get_version_name_in_device(plan.deviceList[0])
 
-monkey_runner.uninstall_app(device_id_list, app)
-monkey_runner.install_app(device_id_list, app)
-
 for device in plan.deviceList:
     thread = threading.Thread(target=monkey_runner.run_monkey, args=(plan, app, device))
     thread_list.append(thread)
