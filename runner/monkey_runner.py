@@ -7,19 +7,19 @@ from config import setting
 def install_app(device_id, app):
     if setting.InstallApk:
         install_command = "adb -s " + device_id + " install -r " + app.apkPath
-        os.system(install_command)
-
-
-def uninstall_app(device_id, app):
-    if setting.UnInstallApk:
-        uninstall_command = "adb -s " + device_id + " uninstall " + app.packageName
-        result = os.popen(uninstall_command).readlines()
+        result = os.popen(install_command).readlines()
         result = result[-1]
         if 'success' in result:
             return True
         else:
             print result
             return False
+
+
+def uninstall_app(device_id, app):
+    if setting.UnInstallApk:
+        uninstall_command = "adb -s " + device_id + " uninstall " + app.packageName
+        os.system(uninstall_command)
 
 
 def run_monkey(plan, app, device):
