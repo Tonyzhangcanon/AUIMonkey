@@ -22,9 +22,28 @@ def uninstall_app(device_id, app):
         os.system(uninstall_command)
 
 
+def app_is_installed(device_id, package_name):
+    command = 'adb -s ' + device_id + " shell pm list"
+    result = os.popen(command)
+    lines = result.readlines()
+    for line in lines:
+        if ("package:"+package_name) == line[:-2]:
+            del command, lines, device_id, line, package_name
+            return True
+        del line
+    del command, lines, device_id, package_name
+    return False
+
+
 def run_monkey(plan, app, device):
-    uninstall_app(device.id, app)
-    if install_app(device.id, app):
+    if setting.InstallApk:
+        uninstall_app(device.id, app)
+        if not install_app(device.id, app):
+            device.result = "InstallFail"
+    elif not app_is_installed(device.id, app.packageName):
+        device.result = "InstallFail"
+
+    if device.result != "InstallFail":
         if device.statue == "unlock":
             device.logFile = 'monkey_' + device.id + '.txt'
             monkey_command = "adb -s " + device.id + " shell monkey -p " + app.packageName + "  -v -v --throttle 200 10000 > " + device.logPath + "/monkey.txt"
@@ -46,6 +65,5 @@ def run_monkey(plan, app, device):
             saver.save_logcat(plan, device)
         else:
             device.result = "DeviceExc"
-    else:
-        device.result = "InstallFail"
+
 
