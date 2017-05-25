@@ -9,7 +9,7 @@ def install_app(device_id, app):
         install_command = "adb -s " + device_id + " install -r " + app.apkPath
         result = os.popen(install_command).readlines()
         result = result[-1]
-        if 'success' in result:
+        if 'Success' in result:
             return True
         else:
             print result
